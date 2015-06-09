@@ -28,7 +28,7 @@ For example:
 [source,js]
 --------------------------------------------------
 {
-    "_source": "obj.*",
+    "_source": "field_pattern",
     "query" : {
         "term" : { "user" : "kimchy" }
     }
@@ -40,7 +40,7 @@ Or
 [source,js]
 --------------------------------------------------
 {
-    "_source": [ "obj1.*", "obj2.*" ],
+    "_source": [ "field_pattern1", "field_pattern2" ],
     "query" : {
         "term" : { "user" : "kimchy" }
     }
@@ -53,11 +53,13 @@ Finally, for complete control, you can specify both include and exclude patterns
 --------------------------------------------------
 {
     "_source": {
-        "include": [ "obj1.*", "obj2.*" ],
-        "exclude": [ "*.description" ],
+        "include": [ "include_field_pattern1", "include_field_pattern2" ],
+        "exclude": [ "exclude_filed_pattern" ],
     }
     "query" : {
         "term" : { "user" : "kimchy" }
     }
 }
 --------------------------------------------------
+
+The "*name" field pattern illustrates that source fields must end with "name".
